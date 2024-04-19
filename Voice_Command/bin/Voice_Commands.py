@@ -3,9 +3,8 @@ import sys
 import time
 import playsound
 from gtts import gTTS
-import datetime
-import sched
 from datetime import datetime, timedelta
+import sched
 import speech_recognition as sr
 from plyer import notification
 
@@ -72,8 +71,6 @@ class EventScheduler:
         """ Schedule a notification for the event. """
         # Schedule notification using the scheduler
         self.scheduler.enterabs(event_time.timestamp(), 1, self.notify, argument=(event_name,))
-        # Run the scheduler
-        self.scheduler.run()
 
     # Method to send a notification
     def notify(self, event_name):
@@ -154,8 +151,8 @@ def main():
             try:
                 # Get event details from user
                 event_name = manual_input("Enter event name: ")
-                event_date = manual_input("Enter event date (YYYY MM/DD): ")
-                event_time = manual_input("Enter event time (HH MM): ")
+                event_date = manual_input("Enter event date (YYYY-MM-DD): ")
+                event_time = manual_input("Enter event time (HH:MM): ")
                 # Add event to scheduler
                 scheduler.add_event(event_name, event_date, event_time)
                 print("Event added successfully")
@@ -258,3 +255,4 @@ def main():
 # Entry point of the program
 if __name__ == '__main__':
     main()
+
